@@ -2320,7 +2320,9 @@ select {
 
 .bg-gray-100 {
   --tw-bg-opacity: 1;
-  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+  /* background-color: rgba(243, 244, 246, var(--tw-bg-opacity)); */
+  background-color: blue;
+
 }
 
 .bg-gray-200 {
