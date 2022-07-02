@@ -14,9 +14,15 @@ pipeline {
                 sh './vendor/bin/phpunit'
             }
         }
-        stage('Deploy') {
+        stage('Deploy to Production') {
             steps {
-                echo 'Deploying....'
+                echo 'Deploying to production'
+                ssh 'ssh -o StirckHostkeyChecking=no deploy@ip-10-0-1-208.eu-west-1.compute.internal "cd form; \
+                git pull origin master; \
+                composer install --optimize--autoloader --no-dev; \
+                php aritsan migrate --force; \
+                php artisan chache:clear; \
+                php artisan config:cache;"'
             }
         }
     }
