@@ -17,7 +17,7 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                 echo 'Deploying to production'
-                sh 'ssh -o StirckHostkeyChecking=no deploy@ip-10-0-1-208.eu-west-1.compute.internal "cd form; \
+                sh 'ssh deploy@ip-10-0-1-208.eu-west-1.compute.internal "cd form; \
                 git pull origin master; \
                 composer install --optimize--autoloader --no-dev; \
                 php aritsan migrate --force; \
