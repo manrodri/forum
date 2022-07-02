@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo 'Deploying to production'
                 sh 'ssh deploy@ip-10-0-1-49.eu-west-1.compute.internal "cd /sites/forum; \
-                git pull github master; \
+                git pull origin master; \
                 composer install --optimize-autoloader --no-dev; \
                 php artisan migrate --force; \
                 php artisan cache:clear; \
