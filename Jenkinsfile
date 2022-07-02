@@ -17,11 +17,12 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                 echo 'Deploying to production'
-                sh 'ssh deploy@ip-10-0-1-208.eu-west-1.compute.internal "cd forum; \
+                sh 'ssh deploy@ip-10-0-1-49.eu-west-1.compute.internal "cd /sites/forum; \
                 git pull origin master; \
-                composer install --optimize--autoloader --no-dev; \
-                php aritsan migrate --force; \
-                php artisan chache:clear; \
+                composer install --optimize-autoloader --no-dev; \
+                php artisan migrate --force; \
+                php artisan cache:clear; \
+                php artisan route:cache; \
                 php artisan config:cache;"'
             }
         }
